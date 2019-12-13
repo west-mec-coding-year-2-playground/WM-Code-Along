@@ -45,7 +45,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   console.log(randomData);
   res.render('index', { 
-    title: 'Express',
+    title: 'Home',
     name: "Hans McMurdy",
     description: "Your Teacher,Web Developer,Web Designer,Frontend Developer,Maker",
     jobTitle: "Your Teacher",
