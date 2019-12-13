@@ -1,0 +1,16 @@
+
+{{#each services}}
+    <div class="col-md-4">
+        <div class="service-box">
+        <div class="service-ico">
+            <span class="ico-circle"><i class="{{this.icon}}"></i></span>
+        </div>
+        <div class="service-content">
+            <h2 class="s-title">{{this.service}}</h2>
+            <p class="s-description text-center">
+            {{this.description}}
+            </p>
+        </div>
+        </div>
+    </div>
+{{/each}}

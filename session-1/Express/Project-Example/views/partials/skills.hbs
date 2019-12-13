@@ -1,0 +1,10 @@
+<div class="skill-mf">
+    <p class="title-s">Skill</p>
+    {{#each skills}}
+    <span>{{this.skill}}</span> <span class="pull-right">{{this.level}}</span>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width:{{this.level}};" aria-valuenow="{{this.level}}" aria-valuemin="0"
+        aria-valuemax="100"></div>
+    </div>
+    {{/each}}
+</div>
