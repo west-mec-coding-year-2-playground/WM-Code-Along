@@ -35,7 +35,7 @@ Unused packages:
 
 
 
-# Update View Engine code in (app.js)[https://github.com/west-mec-coding-year-2-playground/WM-Code-Along/blob/master/session-1/Express/Project-Example/app.js]
+# Update View Engine code in [app.js](https://github.com/west-mec-coding-year-2-playground/WM-Code-Along/blob/master/session-1/Express/Project-Example/app.js)
 ```js
 const hbs = require('express-handlebars')({
   defaultLayout: "main",
@@ -69,7 +69,7 @@ Both of these partials should be included in the main.hbs layout file.
 ```
 
 
-# Add (Layouts)[https://github.com/west-mec-coding-year-2-playground/WM-Code-Along/tree/master/session-1/Express/Project-Example/views/layouts] 
+# Add [Layouts](https://github.com/west-mec-coding-year-2-playground/WM-Code-Along/tree/master/session-1/Express/Project-Example/views/layouts)
 ```html
    <!DOCTYPE html>
    <html lang="en">
@@ -81,7 +81,7 @@ Both of these partials should be included in the main.hbs layout file.
    </html>
 ```
 Note that `{{>head}}` and `{{>head}}` are a reference to reusable files in the partials folder.
-Where as `{{{body}}}` is the entry point of every page.hbs file in the views folders. Also note that variables use the double bracket syntax `{{title}}`. The value of `{{title}}` can seen in the (index.js route file)[https://github.com/west-mec-coding-year-2-playground/WM-Code-Along/blob/master/session-1/Express/Project-Example/routes/index.js] . In the incomplete example below `{{title}}` would be displayed on the page as 'home'.
+Where as `{{{body}}}` is the entry point of every page.hbs file in the views folders. Also note that variables use the double bracket syntax `{{title}}`. The value of `{{title}}` can seen in the [index.js route file](https://github.com/west-mec-coding-year-2-playground/WM-Code-Along/blob/master/session-1/Express/Project-Example/routes/index.js) . In the incomplete example below `{{title}}` would be displayed on the page as 'home'.
 
 ```js
 router.get('/', function(req, res, next) {
@@ -91,11 +91,11 @@ router.get('/', function(req, res, next) {
 ```
 
 # Download a bootstrap theme & use it
-1. Pick a (theme)[https://bootstrapmade.com/devfolio-bootstrap-portfolio-html-template/]
+1. Pick a [theme](https://bootstrapmade.com/devfolio-bootstrap-portfolio-html-template/)
 2. Add the css and js to the public folder
 
 ### Adding a bootstrap theme
-1. Add css links for the theme and update the (head.hbs)[https://github.com/west-mec-coding-year-2-playground/WM-Code-Along/blob/master/session-1/Express/Project-Example/views/partials/head.hbs]
+1. Add css links for the theme and update the [head.hbs](https://github.com/west-mec-coding-year-2-playground/WM-Code-Along/blob/master/session-1/Express/Project-Example/views/partials/head.hbs)
 ```html
   <!-- Bootstrap CSS File -->
   <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -108,7 +108,7 @@ router.get('/', function(req, res, next) {
   <link href="/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 ```
 
-2. Add js script tags for the theme and update the (footer.hbs files)[https://github.com/west-mec-coding-year-2-playground/WM-Code-Along/blob/master/session-1/Express/Project-Example/views/partials/footer.hbs]
+2. Add js script tags for the theme and update the [footer.hbs files](https://github.com/west-mec-coding-year-2-playground/WM-Code-Along/blob/master/session-1/Express/Project-Example/views/partials/footer.hbs)
 ```html
   <!-- JavaScript Libraries -->
   <script src="lib/jquery/jquery.min.js"></script>
@@ -338,7 +338,7 @@ module.exports = router;
 ```
 
 
-### Editing the index route (template file)[https://github.com/west-mec-coding-year-2-playground/WM-Code-Along/blob/master/session-1/Express/Project-Example/views/index.hbs]
+### Editing the index route [template file](https://github.com/west-mec-coding-year-2-playground/WM-Code-Along/blob/master/session-1/Express/Project-Example/views/index.hbs)
 
 
 ### update a route file for a pokemon API
