@@ -25,7 +25,7 @@ const randomSentence = lorem.generateSentences(1);
 
 // for mockup testomonials
 var faker = require('faker');
-const client1Name = faker.name.findName()
+const client1Name = faker.name.findName();
 // faker.image.people();
 // 
 const randomData = faker.image.avatar();
@@ -40,6 +40,7 @@ const randomData = faker.image.avatar();
 var express = require('express');
 var router = express.Router();
 
+const _name = "Hans McMurdy";
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -50,39 +51,100 @@ router.get('/', function(req, res, next) {
     description: "Your Teacher,Web Developer,Web Designer,Frontend Developer,Maker",
     jobTitle: "Your Teacher",
     email: "brett.mcmurdy@west-mec.org",
-    apis: ["starwars","rick and morty", "pokemon"],
+
+    apis: [
+      {
+        name:"star wars api",
+        route: "/starwars",
+        img: faker.image.image(),
+        category: "web Design",
+        date: "18 Sep. 2018",
+        title: "Lorem impsum dolor",
+        icon: "ion-ios-plus-outline"
+      },
+      {
+        name:"rick and morty api",
+        route: "/rnm",
+        img: faker.image.image(),
+        category: "web Design",
+        date: "18 Sep. 2018",
+        title: "Lorem impsum dolor",
+        icon: "ion-ios-plus-outline"
+      },
+      {
+        name:"pokemon",
+        route: "/pokemon",
+        img: faker.image.image(),
+        category: "web Design",
+        date: "18 Sep. 2018",
+        title: "Lorem impsum dolor",
+        icon: "ion-ios-plus-outline"
+      }
+    ],
+    posts: [
+      {
+        route: "/",
+        smIMG: faker.image.avatar(),
+        mdIMG: faker.image.image(),
+        read: "10 min",
+        description: randomParagraph,
+        name: faker.name.findName(),
+      },
+      {
+        route: "/",
+        smIMG: faker.image.avatar(),
+        mdIMG: faker.image.image(),
+        read: "10 min",
+        description: randomParagraph,
+        name: faker.name.findName(),
+      },
+      {
+        route: "/",
+        smIMG: faker.image.avatar(),
+        mdIMG: faker.image.image(),
+        read: "10 min",
+        description: randomParagraph,
+        name: faker.name.findName(),
+      }
+    ],
     clients: [
       {
         name: faker.name.findName(),
-        img: "img/testimonial-2.jpg",
+        img: faker.image.avatar(),
         description: randomParagraph
       },
       {
         name: faker.name.findName(),
-        img: "img/testimonial-2.jpg",
+        img: faker.image.avatar(),
         description: randomParagraph
       },
       {
         name: faker.name.findName(),
-        img: "img/testimonial-2.jpg",
+        img: faker.image.avatar(),
         description: randomParagraph
       }
     ],
     services: [
       {
         icon: "ion-monitor",
-        service: "Web Design",
+        service: "star wars api",
         description: servicesDescription,
+        name:"star wars api",
+        route: "/star",
       },
       {
         icon: "ion-code-working",
-        service: "Web Development",
+        service: "rick and morty api",
         description: servicesDescription,
+        name:"rick and morty api",
+        route: "/rick",
       },
       {
         icon: "ion-android-phone-portrait",
-        service: "Responsive Design",
+        service: "pokemon api",
         description: servicesDescription,
+        name:"pokemon api",
+        route: "/poke",
       }
     ],
     skills: [
@@ -96,15 +158,19 @@ router.get('/', function(req, res, next) {
       },
       {
         skill: "javascript",
-        level: "100%"
+        level: "95%"
+      },
+      {
+        skill: "Docker",
+        level: "60%"
       },
       {
         skill: "node",
-        level: "80%"
+        level: "60%"
       },
       {
         skill: "express",
-        level: "100%"
+        level: "70%"
       },
       {
         skill: "server-side rendering",
@@ -113,10 +179,6 @@ router.get('/', function(req, res, next) {
       {
         skill: "AJAX",
         level: "100%"
-      },
-      {
-        skill: "Docker",
-        level: "60%"
       },
       {
         skill: "fetch",

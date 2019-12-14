@@ -4,10 +4,18 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
 var app = express();
+
+var indexRouter = require('./routes/index');
+var starRouter = require('./routes/star');
+var rickRouter = require('./routes/rick');
+var pokemonRouter = require('./routes/poke');
+app.use('/', indexRouter);
+app.use('/star', starRouter);
+app.use('/rick', rickRouter);
+app.use('/poke', pokemonRouter);
+
+
 
 
 
@@ -39,8 +47,6 @@ app.use('/js', express.static('public/js'));
 
 // app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 // // catch 404 and forward to error handler
 // app.use(function(req, res, next) {

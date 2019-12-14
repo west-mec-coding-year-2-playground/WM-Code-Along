@@ -1,0 +1,37 @@
+<div class="container" sty;e>
+    <div class="row">
+        {{#each data}}
+            <div class="col-sm col-md-6 col-lg-4">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top"  src={{this.image}} alt="Card image cap for {{this.name}}" >
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.name}}</h5>
+                        <p class="card-text">Some info about {{this.name}}.</p>
+                        <a href="/rick/{{this.id}}" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            {{!-- <img src={{img}} alt=""> --}}
+            <script >
+                var selector{{this.name}} = document.getElementById("{{this.name}}");
+                fetch("{{this.url}}")
+                .then(response=>response.json() )
+                .then(
+                    data => {
+                        //console.log( data );
+                        selector{{this.name}}.innerHTML = `
+                            <div class="card" style="width: 18rem;">
+                                <img class="card-img-top"  src=${data.sprites.front_shiny} alt="Card image cap for {{this.name}}" >
+                                <div class="card-body">
+                                    <h5 class="card-title">{{this.name}}</h5>
+                                    <p class="card-text">Some info about {{this.name}}.</p>
+                                    <a href="/poke/{{this.name}}" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                        `;
+                });
+            </script>
+        {{/each}}
+
+    </div>
+</div>
