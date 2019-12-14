@@ -35,14 +35,14 @@ Unused packages:
 
 
 
-# Update View Engine code in app.js
+# Update View Engine code in (app.js)[https://github.com/west-mec-coding-year-2-playground/WM-Code-Along/blob/master/session-1/Express/Project-Example/app.js]
 ```js
-   const hbs = require('express-handlebars')({
-     defaultLayout: "main",
-     extname: '.hbs'
-   });
-   app.engine('hbs', hbs);
-   app.set('view engine', 'hbs');
+const hbs = require('express-handlebars')({
+  defaultLayout: "main",
+  extname: '.hbs'
+});
+app.engine('hbs', hbs);
+app.set('view engine', 'hbs');
 ```
 
 
@@ -69,7 +69,7 @@ Both of these partials should be included in the main.hbs layout file.
 ```
 
 
-# Add Layouts 
+# Add (Layouts)[https://github.com/west-mec-coding-year-2-playground/WM-Code-Along/tree/master/session-1/Express/Project-Example/views/layouts] 
 ```html
    <!DOCTYPE html>
    <html lang="en">
@@ -80,15 +80,50 @@ Both of these partials should be included in the main.hbs layout file.
    </body>
    </html>
 ```
+Note that `{{>head}}` and `{{>head}}` are a reference to reusable files in the partials folder.
+Where as `{{{body}}}` is the entry point of every page.hbs file in the views folders. Also note that variables use the double bracket syntax `{{title}}`. The value of `{{title}}` can seen in the (index.js route file)[https://github.com/west-mec-coding-year-2-playground/WM-Code-Along/blob/master/session-1/Express/Project-Example/routes/index.js] . In the incomplete example below `{{title}}` would be displayed on the page as 'home'.
 
+```js
+router.get('/', function(req, res, next) {
+  console.log(randomData);
+  res.render('index', { 
+    title: 'Home',
+```
 
 # Download a bootstrap theme & use it
 1. Pick a (theme)[https://bootstrapmade.com/devfolio-bootstrap-portfolio-html-template/]
 2. Add the css and js to the public folder
 
 ### Adding a bootstrap theme
-1. change the head.hbs & footer files
-2. update the path for static files (the "lazy" way).
+1. Add css links for the theme and update the (head.hbs)[https://github.com/west-mec-coding-year-2-playground/WM-Code-Along/blob/master/session-1/Express/Project-Example/views/partials/head.hbs]
+```html
+  <!-- Bootstrap CSS File -->
+  <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/lib/animate/animate.min.css" rel="stylesheet">
+  <link href="/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+```
+
+2. Add js script tags for the theme and update the (footer.hbs files)[https://github.com/west-mec-coding-year-2-playground/WM-Code-Along/blob/master/session-1/Express/Project-Example/views/partials/footer.hbs]
+```html
+  <!-- JavaScript Libraries -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/jquery/jquery-migrate.min.js"></script>
+  <script src="lib/popper/popper.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/counterup/jquery.waypoints.min.js"></script>
+  <script src="lib/counterup/jquery.counterup.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/lightbox/js/lightbox.min.js"></script>
+  <script src="lib/typed/typed.min.js"></script>
+```
+
+3. Update the path for static files.
 ```js
 // Serve static content for the app from the "public" directory in the application directory.
 app.use('/public', express.static('public'));
@@ -103,17 +138,25 @@ app.use('/js', express.static('public/js'));
 
 ### routes files in app.js
 ```js
-var indexRouter = require('./routes/index');
-var starRouter = require('./routes/star');
-var rickRouter = require('./routes/rick');
-var pokemonRouter = require('./routes/poke');
-app.use('/', indexRouter);
-app.use('/star', starRouter);
-app.use('/rick', rickRouter);
-app.use('/poke', pokemonRouter);
+// these import/require the files in the route directory
+    var indexRouter = require('./routes/index');
+    var starRouter = require('./routes/star');
+    var rickRouter = require('./routes/rick');
+    var pokemonRouter = require('./routes/poke');
+
+// This defines the routes globally and uses the required route file.
+// The point here is clean up our server file and also prepare for a full-blown MVC app
+// example if we change app.use('/rickandmorty', rickRouter); 
+// then  all the routes in the rickRouter will be mapped to /rickandmorty
+    app.use('/', indexRouter);
+    app.use('/star', starRouter);
+    app.use('/rick', rickRouter);
+    app.use('/poke', pokemonRouter);
 ```
 
 ### Editing the Project-Example/routes/index.js
+Here we have our entire route for the home page.
+Pay attention to how the faker and lorem-ipsum packages because these are two liberaries I have never used before, therefor meeting the project requirement. These packages are used to generate dynamic page content on every reload.
 ```js
 // Lorem-ipsum for random sentences and paragrpahs
 const LoremIpsum = require("lorem-ipsum").LoremIpsum;
@@ -158,7 +201,7 @@ router.get('/', function(req, res, next) {
     apis: [
       {
         name:"star wars api",
-        route: "/starwars",
+        route: "/star",
         img: faker.image.image(),
         category: "web Design",
         date: "18 Sep. 2018",
@@ -167,7 +210,7 @@ router.get('/', function(req, res, next) {
       },
       {
         name:"rick and morty api",
-        route: "/rnm",
+        route: "/rick",
         img: faker.image.image(),
         category: "web Design",
         date: "18 Sep. 2018",
@@ -176,7 +219,7 @@ router.get('/', function(req, res, next) {
       },
       {
         name:"pokemon",
-        route: "/pokemon",
+        route: "/poke",
         img: faker.image.image(),
         category: "web Design",
         date: "18 Sep. 2018",
