@@ -297,3 +297,81 @@ module.exports = router;
 
 ### Editing the index route (template file)[https://github.com/west-mec-coding-year-2-playground/WM-Code-Along/blob/master/session-1/Express/Project-Example/views/index.hbs]
 
+
+### update a route file for a pokemon API
+```js
+var express = require('express');
+var router = express.Router();
+const fetch = require("node-fetch");
+
+/* GET users listing. */
+router.get('/', async function(req, res, next) {
+      try {
+        const URI = `https://pokeapi.co/api/v2/pokemon/`;
+        const pokemonData = await fetch(URI);
+        const json = await pokemonData.json();
+        const [...monsters] = await json.results;
+        await res.render('poke', {
+            results: monsters
+        });
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+router.get('/:id', async function(req, res, next) {
+  try {
+    const URI = `https://pokeapi.co/api/v2/pokemon/${req.params.id}`;
+    const pokemonData = await fetch(URI);
+    const json = await pokemonData.json();
+    const pokeName = await json.name;
+    const pokeImg = await json.sprites.back_default;
+    await res.render('pokename', {
+        name: pokeName,
+        img: pokeImg
+    });
+  } catch (error) {
+      console.log(error);
+  }
+});
+
+module.exports = router;
+```
+
+### update the poke.hbs file to display all the pokemon using a combination of server-side fetch and client-side fetch
+```html
+<div class="container">
+    <div class="row">
+        {{#each results}}
+
+                <div id={{this.name}} class="col">
+                    {{!-- <img src={{this.img}} alt="{{this.name}}"> --}}
+                </div>
+
+            <script >
+                var selector{{this.name}} = document.getElementById("{{this.name}}");
+                fetch("{{this.url}}")
+                .then(response=>response.json() )
+                .then(
+                    data => {
+                        //console.log( data );
+                        selector{{this.name}}.innerHTML = `
+                            <div class="card" style="width: 18rem;">
+                                <img class="card-img-top"  src=${data.sprites.front_shiny} alt="Card image cap for {{this.name}}" >
+                                <div class="card-body">
+                                    <h5 class="card-title">{{this.name}}</h5>
+                                    <p class="card-text">Some info about {{this.name}}.</p>
+                                    <a href="/poke/{{this.name}}" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                        `;
+                });
+            </script>
+
+        {{/each}}
+
+    </div>
+</div>
+```
+
+
