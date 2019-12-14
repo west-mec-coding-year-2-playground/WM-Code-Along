@@ -299,6 +299,14 @@ module.exports = router;
 
 
 ### update a route file for a pokemon API
+Note that you don't need to use "/poke" when requiring a file.
+This is because you define the route to "/poke" in app.js.
+Example: 
+```js
+var indexRouter = require('./routes/index');
+app.use('/poke', pokemonRouter);
+```
+
 ```js
 var express = require('express');
 var router = express.Router();
