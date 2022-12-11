@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/west-mec-coding-year-2-playground/WM-Code-Along#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.3"
   }
 }
